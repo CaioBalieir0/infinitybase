@@ -9,7 +9,6 @@ const TaskSchema: Schema = new Schema(
     },
     description: {
       type: String,
-      required: [true, "A descrição da tarefa é obrigatório"],
       trim: true,
     },
     priority: {

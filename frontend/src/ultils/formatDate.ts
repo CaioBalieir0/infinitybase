@@ -1,5 +1,4 @@
 export default function formatDate(data: string): string {
-  console.log(data);
   const novaData = new Date(data);
   const dataFormatada = novaData.toLocaleString("pt-br", {
     year: "2-digit",
