@@ -79,3 +79,22 @@ export const getTasks = async (req: Request, res: Response) => {
       .json({ message: "Não existe nenhuma tarefa adicionada.", error });
   }
 };
+export const getTaskById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const task = await Task.findById(id);
+
+    if (!task) {
+      res.status(404).json({ message: "Tarefa não encontrada" });
+      return;
+    }
+
+    res.status(200).json({
+      message: "Tarefa encontrada com sucesso",
+      data: task,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao buscar tarefa", error });
+  }
+};

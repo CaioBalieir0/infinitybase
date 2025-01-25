@@ -9,6 +9,8 @@ const TaskSchema: Schema = new Schema(
     },
     description: {
       type: String,
+      default: "Sem descrição",
+      trim: true,
     },
     priority: {
       type: String,

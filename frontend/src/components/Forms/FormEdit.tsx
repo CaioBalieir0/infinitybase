@@ -1,15 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import useCreateTask from "@/hooks/useCreateTask";
+import useTaskUpdate from "@/hooks/useEditTask";
+import axios from "axios";
 
-export default function FormCreate() {
+interface FormEditProps {
+  taskId: string;
+}
+
+export default function FormEdit({ taskId }: FormEditProps) {
   const [validated, setValidated] = useState(false);
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("Sem descrição");
+  const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Baixa");
   const [status, setStatus] = useState("Não Iniciada");
 
-  const { createTask, loading, error, success } = useCreateTask();
+  const { updateTask, loading, error, success } = useTaskUpdate(taskId);
+
+  useEffect(() => {
+    const fetchTask = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/${taskId}`);
+        setTitle(response.data.data.title);
+        setDescription(response.data.data.description);
+        setPriority(response.data.data.priority);
+        setStatus(response.data.data.status);
+        console.log(response.data.data);
+      } catch (err) {
+        console.error("Erro ao carregar tarefa:", err);
+      }
+    };
+
+    if (taskId) {
+      fetchTask();
+    }
+  }, [taskId]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
@@ -22,10 +46,11 @@ export default function FormCreate() {
     setValidated(true);
 
     if (form.checkValidity()) {
-      createTask({ title, description, priority, status });
+      updateTask({ title, description, priority, status });
     }
   };
 
+  console.log(title);
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mt-2">
@@ -97,11 +122,11 @@ export default function FormCreate() {
       </Row>
 
       <Button variant="primary" type="submit" disabled={loading}>
-        {loading ? "Enviando..." : "Criar Tarefa"}
+        {loading ? "Atualizando..." : "Atualizar Tarefa"}
       </Button>
 
       {success && (
-        <div className="mt-3 text-success">Tarefa criada com sucesso!</div>
+        <div className="mt-3 text-success">Tarefa atualizada com sucesso!</div>
       )}
       {error && <div className="mt-3 text-danger">{error}</div>}
     </Form>

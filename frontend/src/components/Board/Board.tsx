@@ -52,8 +52,9 @@ export default function Board({ titulo, status, filters }: BoardProps) {
             filteredTasks.map((task) => (
               <Col key={task._id} className="mb-3">
                 <Task
+                  _id={task._id}
                   titulo={task.title}
-                  descricao={task.description || "Sem descrição"}
+                  descricao={task.description}
                   status={task.status}
                   prioridade={task.priority}
                   data={task.createdAt}

@@ -1,8 +1,10 @@
 import { Row, Col, Button, Alert } from "react-bootstrap";
 import { FaTrash, FaPencilAlt } from "react-icons/fa";
 import formatDate from "../../ultils/formatDate";
+import ModalEdit from "../Modals/ModalEdit";
 
 interface TaskProps {
+  _id: string;
   titulo: string;
   descricao: string;
   prioridade: string;
@@ -11,6 +13,7 @@ interface TaskProps {
 }
 
 export default function Task({
+  _id,
   titulo,
   descricao,
   prioridade,
@@ -63,9 +66,7 @@ export default function Task({
         </Row>
         <Row className="text-center justify-content-center">
           <Col>
-            <Button variant="primary">
-              Editar <FaPencilAlt />
-            </Button>
+            <ModalEdit modalTaskId={_id} />
           </Col>
           <Col>
             <Button variant="danger">
