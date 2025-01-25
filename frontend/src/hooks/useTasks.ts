@@ -16,16 +16,15 @@ interface Filter {
   status?: string;
 }
 
-export default function useFilteredTasks(filters: Filter) {
+export default function useTask(filters: Filter) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api", {
-          params: filters,
+          params: { title: filters.title, priority: filters.priority },
         });
         setTasks(response.data.data);
       } catch (err: any) {

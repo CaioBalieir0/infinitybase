@@ -34,7 +34,6 @@ export default function Task({
       ? "warning"
       : "success";
 
-  console.log(status);
   return (
     <>
       <div className={`py-4 border-${borderColor} border p-5`}>

@@ -13,10 +13,10 @@ export default function Priority({ onFilterChange }: FilterSelectProps) {
     <Form.Group className="mb-3">
       <Form.Label>Prioridade</Form.Label>
       <Form.Select onChange={handleChange}>
-        <option value="todas">Todas</option>
-        <option value="alta">Alta</option>
-        <option value="media">Média</option>
-        <option value="baixa">Baixa</option>
+        <option value="Todas">Todas</option>
+        <option value="Alta">Alta</option>
+        <option value="Média">Média</option>
+        <option value="Baixa">Baixa</option>
       </Form.Select>
     </Form.Group>
   );

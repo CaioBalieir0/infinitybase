@@ -22,6 +22,7 @@ export default function Search({ onClickButton }: SearchFilter) {
           type="text"
           placeholder="Pesquisar por título da tarefa"
           onChange={(e) => setSearchText(e.target.value)}
+          value={searchText}
         />
         <Button variant="outline-warning" id="buscar" onClick={handleSearch}>
           Buscar

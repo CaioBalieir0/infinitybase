@@ -9,12 +9,11 @@ const TaskSchema: Schema = new Schema(
     },
     description: {
       type: String,
-      trim: true,
     },
     priority: {
       type: String,
       enum: ["Alta", "Média", "Baixa"],
-      default: "Média",
+      default: "Baixa",
     },
     status: {
       type: String,

@@ -13,18 +13,27 @@ export default function HomePage() {
   }) => {
     setFilters(newFilters);
   };
+
   return (
     <>
       <Filter onFiltersChange={handleFiltersChange} />
       <Row className="justify-content-evenly mt-5">
         <Col style={{ padding: "0" }} className="mx-5">
-          <Board titulo="Em Andamento" status="Em Andamento" />
+          <Board
+            titulo="Não Iniciadas"
+            status="Não Iniciada"
+            filters={filters}
+          />
         </Col>
         <Col style={{ padding: "0" }} className="mx-5">
-          <Board titulo="Concluídas" status="Concluída" />
+          <Board
+            titulo="Em Andamento"
+            status="Em Andamento"
+            filters={filters}
+          />
         </Col>
         <Col style={{ padding: "0" }} className="mx-5">
-          <Board titulo="Não Iniciadas" status="Não Iniciada" />
+          <Board titulo="Finalizada" status="Finalizada" filters={filters} />
         </Col>
       </Row>
     </>

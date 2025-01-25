@@ -1,8 +1,10 @@
 "use client";
+import { useMemo } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import s from "./Board.module.css";
 import Task from "../Tasks/Tasks";
 import useTasks from "@/hooks/useTasks";
+import ModalCreate from "../Modals/ModalCreate";
 
 interface BoardProps {
   titulo: string;
@@ -13,8 +15,16 @@ interface BoardProps {
   };
 }
 
-export default function Board({ titulo, status }: BoardProps) {
-  const { tasks, loading, error } = useTasks();
+export default function Board({ titulo, status, filters }: BoardProps) {
+  const memoizedFilters = useMemo(
+    () => ({
+      ...filters,
+      priority: filters.priority === "Todas" ? "" : filters.priority,
+    }),
+    [filters.priority, filters.search]
+  );
+
+  const { tasks, loading, error } = useTasks(memoizedFilters);
 
   if (loading) {
     return <p>Carregando tarefas...</p>;
@@ -34,7 +44,7 @@ export default function Board({ titulo, status }: BoardProps) {
             <h3>{titulo}</h3>
           </div>
           <div>
-            <Button variant="success">Adicionar</Button>
+            <ModalCreate />
           </div>
         </div>
         <Row>
