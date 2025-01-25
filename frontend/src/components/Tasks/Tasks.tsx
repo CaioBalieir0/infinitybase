@@ -1,7 +1,7 @@
 import { Row, Col, Button, Alert } from "react-bootstrap";
-import { FaTrash, FaPencilAlt } from "react-icons/fa";
 import formatDate from "../../ultils/formatDate";
 import ModalEdit from "../Modals/ModalEdit";
+import ModalDelete from "../Modals/ModalDelete";
 
 interface TaskProps {
   _id: string;
@@ -69,9 +69,7 @@ export default function Task({
             <ModalEdit modalTaskId={_id} />
           </Col>
           <Col>
-            <Button variant="danger">
-              Excluir <FaTrash />
-            </Button>
+            <ModalDelete modalTaskId={_id} />
           </Col>
         </Row>
       </div>
