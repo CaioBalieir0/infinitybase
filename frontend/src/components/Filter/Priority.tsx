@@ -1,15 +1,22 @@
 import { Form } from "react-bootstrap";
-import Board from "../Board/Board";
 
-export default function Priority() {
+interface FilterSelectProps {
+  onFilterChange: (selected: string) => void;
+}
+
+export default function Priority({ onFilterChange }: FilterSelectProps) {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    onFilterChange(event.target.value);
+  };
+
   return (
     <Form.Group className="mb-3">
       <Form.Label>Prioridade</Form.Label>
-      <Form.Select>
-        <option value="3">Todas</option>
-        <option value="2">Alta</option>
-        <option value="1">Média</option>
-        <option value="0">Baixa</option>
+      <Form.Select onChange={handleChange}>
+        <option value="todas">Todas</option>
+        <option value="alta">Alta</option>
+        <option value="media">Média</option>
+        <option value="baixa">Baixa</option>
       </Form.Select>
     </Form.Group>
   );

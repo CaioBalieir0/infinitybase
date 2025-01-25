@@ -7,6 +7,10 @@ import useTasks from "@/hooks/useTasks";
 interface BoardProps {
   titulo: string;
   status: string;
+  filters: {
+    priority: string;
+    search: string;
+  };
 }
 
 export default function Board({ titulo, status }: BoardProps) {
