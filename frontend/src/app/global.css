@@ -5,6 +5,7 @@
 
 body {
   background-color: black;
+  overflow-x: hidden;
 }
 
 header {
@@ -20,4 +21,8 @@ h1 {
   text-decoration: underline rgb(13, 202, 240) !important;
   color: rgba(13, 202, 240, 0.685) !important;
   transition: 0.5s;
+}
+
+.text-green {
+  color: green;
 }

@@ -24,7 +24,8 @@ export default function RootLayout({
             <NavItem className="d-flex align-items-center">
               <NavItem>
                 <NavLink
-                  href=""
+                  target="_black"
+                  href="https://www.linkedin.com/in/caio-balieiro-63569926a/"
                   className="d-flex align-items-center gap-1 link-info"
                 >
                   <FaLinkedin /> Caio Balieiro
@@ -32,7 +33,8 @@ export default function RootLayout({
               </NavItem>
               <NavItem>
                 <NavLink
-                  href=""
+                  target="_black"
+                  href="https://github.com/CaioBalieir0/infinitybase"
                   className="d-flex align-items-center gap-1 link-info"
                 >
                   <FaGithub /> Caio Balieiro
@@ -40,7 +42,8 @@ export default function RootLayout({
               </NavItem>
               <NavItem>
                 <NavLink
-                  href=""
+                  target="_black"
+                  href="https://www.linkedin.com/company/infinitybase/"
                   className="d-flex align-items-center gap-1 link-info"
                 >
                   <FaLinkedin /> InfinityBase
@@ -50,7 +53,7 @@ export default function RootLayout({
           </Nav>
         </header>
 
-        <main>{children}</main>
+        <main style={{ width: "100vw" }}>{children}</main>
       </body>
     </html>
   );

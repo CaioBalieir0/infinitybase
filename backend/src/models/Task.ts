@@ -7,6 +7,11 @@ const TaskSchema: Schema = new Schema(
       required: [true, "O título da tarefa é obrigatório"],
       trim: true,
     },
+    description: {
+      type: String,
+      required: [true, "A descrição da tarefa é obrigatório"],
+      trim: true,
+    },
     priority: {
       type: String,
       enum: ["Alta", "Média", "Baixa"],
