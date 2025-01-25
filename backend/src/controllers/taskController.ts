@@ -22,7 +22,8 @@ export const updateTask = async (req: Request, res: Response) => {
     });
 
     if (!updatedTask) {
-      return res.status(404).json({ message: "Tarefa não encontrada" });
+      res.status(404).json({ message: "Tarefa não encontrada" });
+      return;
     }
 
     res
@@ -39,9 +40,8 @@ export const deleteTask = async (req: Request, res: Response) => {
 
     const deletedTask = await Task.findByIdAndDelete(id);
     if (!deletedTask) {
-      return res
-        .status(404)
-        .json({ success: false, error: "Tarefa não encontrada." });
+      res.status(404).json({ success: false, error: "Tarefa não encontrada." });
+      return;
     }
 
     res
