@@ -1,4 +1,3 @@
-// useTasks.ts
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -26,7 +25,7 @@ export default function useTasks(filters: Filter, refreshKey: number) {
     const fetchTasks = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api", {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}`, {
           params: {
             title: filters.title,
             priority: filters.priority,
@@ -42,7 +41,7 @@ export default function useTasks(filters: Filter, refreshKey: number) {
     };
 
     fetchTasks();
-  }, [filters, refreshKey]); // O refreshKey será usado para forçar a reexecução
+  }, [filters, refreshKey]);
 
   return { tasks, loading, error };
 }

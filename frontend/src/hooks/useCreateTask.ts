@@ -19,7 +19,10 @@ export default function useCreateTask() {
     setSuccess(false);
 
     try {
-      const response = await axios.post("http://localhost:5000/api", newTask);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}`,
+        newTask
+      );
 
       if (response.status === 200) {
         setSuccess(true);

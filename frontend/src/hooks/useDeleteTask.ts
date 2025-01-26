@@ -13,7 +13,7 @@ export default function useDeleteTask() {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/${taskId}`
+        `${process.env.NEXT_PUBLIC_API_URL}/${taskId}`
       );
 
       if (response.status === 200) {

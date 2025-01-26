@@ -29,7 +29,7 @@ export default function useTaskUpdate(taskId: string) {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/${taskId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/${taskId}`,
         updatedTaskData
       );
 
