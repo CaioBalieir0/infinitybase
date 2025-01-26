@@ -106,3 +106,22 @@ Se estiver usando o [MongoDB Atlas](https://www.mongodb.com/cloud/atlas), config
 MONGODB_URI=mongodb://<seu-usuario>:<sua-senha>@<endereço-do-mongo>:<porta>/<nome-do-banco>
 
 ```
+
+## **5. Alterando a Porta do Frontend**
+
+Por padrão, o frontend estará rodando na porta `3000`. Caso você precise alterar a porta em que o frontend será executado ou se a porta padrão estiver em uso, você pode configurar a variável `NEXT_PUBLIC_API_URL` no arquivo `.env` do **frontend** .
+
+### Passos:
+
+1. Navegue até a pasta `frontend` do projeto.
+2. Abra o arquivo `.env.local` (se não existir, crie um novo arquivo com esse nome).
+3. Adicione ou modifique a seguinte variável de ambiente para definir a URL da API:
+
+   ```
+   NEXT_PUBLIC_API_URL=http://localhost:5000/api
+
+   ```
+
+   Aqui você pode alterar `localhost:5000` para a porta e URL que desejar para o backend.
+
+4. Salve o arquivo e reinicie o servidor do frontend. Agora, o frontend utilizará a URL que você configurou para fazer as requisições para o backend.
