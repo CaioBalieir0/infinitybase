@@ -13,7 +13,6 @@ interface Task {
 interface Filter {
   title?: string;
   priority?: string;
-  status?: string;
 }
 
 export default function useTasks(filters: Filter, refreshKey: number) {
@@ -25,11 +24,11 @@ export default function useTasks(filters: Filter, refreshKey: number) {
     const fetchTasks = async () => {
       try {
         setLoading(true);
+        console.log("Hooks: " + filters.title);
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}`, {
           params: {
             title: filters.title,
             priority: filters.priority,
-            status: filters.status,
           },
         });
         setTasks(response.data.data);

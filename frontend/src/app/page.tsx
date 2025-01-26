@@ -5,11 +5,11 @@ import Board from "@/components/Board/Board";
 import { useState } from "react";
 
 export default function HomePage() {
-  const [filters, setFilters] = useState({ priority: "Todas", search: "" });
+  const [filters, setFilters] = useState({ priority: "Todas", title: "" });
 
   const handleFiltersChange = (newFilters: {
     priority: string;
-    search: string;
+    title: string;
   }) => {
     setFilters(newFilters);
   };

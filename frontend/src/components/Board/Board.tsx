@@ -1,4 +1,3 @@
-// Board.tsx
 import { useMemo, useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import s from "./Board.module.css";
@@ -55,7 +54,6 @@ export default function Board({ titulo, status, filters }: BoardProps) {
             <h3>{titulo}</h3>
           </div>
           <div>
-            {/* Passando a função handleTaskCreated como prop */}
             <ModalCreate onTaskCreated={handleTaskCreated} />
           </div>
         </div>

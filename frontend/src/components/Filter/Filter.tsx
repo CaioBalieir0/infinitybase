@@ -10,21 +10,21 @@ interface FilterProps {
 
 interface Filters {
   priority: string;
-  search: string;
+  title: string;
 }
 
 export default function Filter({ onFiltersChange }: FilterProps) {
   const [selectedPriority, setSelectedPriority] = useState<string>("Todas");
-  const [search, setSearch] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
 
   const handlePriority = (selected: string) => {
     setSelectedPriority(selected);
-    onFiltersChange({ priority: selected, search });
+    onFiltersChange({ priority: selected, title });
   };
 
   const handleSearch = (selected: string) => {
-    setSearch(selected);
-    onFiltersChange({ priority: selectedPriority, search: selected });
+    setTitle(selected);
+    onFiltersChange({ priority: selectedPriority, title: selected });
   };
 
   return (
