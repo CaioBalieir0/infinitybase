@@ -40,14 +40,20 @@ export default function Task({
   return (
     <>
       <div className={`py-4 border-${borderColor} border p-5`}>
-        <Row className="mb-2">
+        <Row className="justify-content-start">
           <Col className="">
-            <h3 className="">{titulo}</h3>
-          </Col>
-          <Col className="text-center">
-            <Alert className="small py-0" variant={variant}>
+            <Alert
+              className="small py-0"
+              variant={variant}
+              style={{ width: "30%" }}
+            >
               {prioridade}
             </Alert>
+          </Col>
+        </Row>
+        <Row className="mb-2">
+          <Col className="text-center">
+            <h3 className="">{titulo}</h3>
           </Col>
         </Row>
         <Row className="text-center">

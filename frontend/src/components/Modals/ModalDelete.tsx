@@ -4,11 +4,11 @@ import Modal from "react-bootstrap/Modal";
 import { FaTrash } from "react-icons/fa";
 import useDeleteTask from "@/hooks/useDeleteTask";
 
-interface ModalEditProps {
+interface ModalDeleteProps {
   modalTaskId: string;
 }
 
-export default function ModalEdit({ modalTaskId }: ModalEditProps) {
+export default function ModalDelete({ modalTaskId }: ModalDeleteProps) {
   const [show, setShow] = useState(false);
   const { deleteTask, loading, error, success } = useDeleteTask();
 
@@ -16,6 +16,7 @@ export default function ModalEdit({ modalTaskId }: ModalEditProps) {
   const handleShow = () => setShow(true);
   const handleDelet = () => {
     deleteTask(modalTaskId);
+    window.location.reload();
     setShow(false);
   };
 

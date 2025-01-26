@@ -3,6 +3,8 @@ import Task from "../models/Task";
 
 export const createTask = async (req: Request, res: Response) => {
   try {
+    if (!req.body.description) req.body.description = "Sem descrição";
+
     const newTask = new Task(req.body);
     await newTask.save();
     res

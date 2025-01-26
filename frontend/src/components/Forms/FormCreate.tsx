@@ -2,16 +2,20 @@ import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import useCreateTask from "@/hooks/useCreateTask";
 
-export default function FormCreate() {
-  const [validated, setValidated] = useState(false);
+interface FormCreateProps {
+  onTaskCreated: () => void;
+}
+
+export default function FormCreate({ onTaskCreated }: FormCreateProps) {
+  const [validated, setValidated] = useState<boolean>(false);
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("Sem descrição");
-  const [priority, setPriority] = useState("Baixa");
-  const [status, setStatus] = useState("Não Iniciada");
+  const [description, setDescription] = useState<string>("");
+  const [priority, setPriority] = useState<string>("Baixa");
+  const [status, setStatus] = useState<string>("Não Iniciada");
 
   const { createTask, loading, error, success } = useCreateTask();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
 
     if (form.checkValidity() === false) {
@@ -22,7 +26,9 @@ export default function FormCreate() {
     setValidated(true);
 
     if (form.checkValidity()) {
-      createTask({ title, description, priority, status });
+      event.preventDefault();
+      await createTask({ title, description, priority, status });
+      onTaskCreated();
     }
   };
 
@@ -99,11 +105,6 @@ export default function FormCreate() {
       <Button variant="primary" type="submit" disabled={loading}>
         {loading ? "Enviando..." : "Criar Tarefa"}
       </Button>
-
-      {success && (
-        <div className="mt-3 text-success">Tarefa criada com sucesso!</div>
-      )}
-      {error && <div className="mt-3 text-danger">{error}</div>}
     </Form>
   );
 }

@@ -50,7 +50,6 @@ export default function FormEdit({ taskId }: FormEditProps) {
     }
   };
 
-  console.log(title);
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mt-2">

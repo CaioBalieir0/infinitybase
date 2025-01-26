@@ -17,22 +17,22 @@ export default function HomePage() {
   return (
     <>
       <Filter onFiltersChange={handleFiltersChange} />
-      <Row className="justify-content-evenly mt-5">
-        <Col style={{ padding: "0" }} className="mx-5">
+      <Row className="justify-content-evenly mt-5 ms-lg-0 ms-2">
+        <Col style={{ padding: "0" }} className="mb-4" lg={3} xs={12}>
           <Board
             titulo="Não Iniciadas"
             status="Não Iniciada"
             filters={filters}
           />
         </Col>
-        <Col style={{ padding: "0" }} className="mx-5">
+        <Col style={{ padding: "0" }} className="mb-4" lg={3} xs={12}>
           <Board
             titulo="Em Andamento"
             status="Em Andamento"
             filters={filters}
           />
         </Col>
-        <Col style={{ padding: "0" }} className="mx-5">
+        <Col style={{ padding: "0" }} className="" lg={3} xs={12}>
           <Board titulo="Finalizada" status="Finalizada" filters={filters} />
         </Col>
       </Row>

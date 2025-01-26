@@ -15,7 +15,7 @@ export default function RootLayout({
       <body className="text-white fs-6">
         <header className="">
           <Nav className="align-items-center justify-content-between">
-            <NavItem className="ms-3 mt-1">
+            <NavItem className="ms-3 mt-1 mb-1">
               <h1 className="display-6 fs-4">
                 Lista de tarefas |{" "}
                 <span className="text-white">InfinityBase</span>
@@ -53,7 +53,9 @@ export default function RootLayout({
           </Nav>
         </header>
 
-        <main style={{ width: "100vw" }}>{children}</main>
+        <main className="d-flex flex-column justify-content-center mx-lg-0 mx-5 mb-3">
+          {children}
+        </main>
       </body>
     </html>
   );
