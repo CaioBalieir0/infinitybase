@@ -3,16 +3,17 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import FormCreate from "../Forms/FormCreate";
 
-interface ModalCreateProps {
-  onTaskCreated: () => void;
+interface ModalProps {
+  status: string;
 }
 
-export default function ModalCreate({ onTaskCreated }: ModalCreateProps) {
+export default function ModalCreate({ status }: ModalProps) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  console.log(status);
   return (
     <>
       <Button variant="success" onClick={handleShow}>
@@ -24,7 +25,7 @@ export default function ModalCreate({ onTaskCreated }: ModalCreateProps) {
           <Modal.Title>Adicionar nova tarefa</Modal.Title>
         </Modal.Header>
         <Modal.Body className="bg-dark px-5">
-          <FormCreate onTaskCreated={onTaskCreated} />
+          <FormCreate statusBoard={status} />
         </Modal.Body>
       </Modal>
     </>

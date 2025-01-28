@@ -33,7 +33,7 @@ export default function HomePage() {
           />
         </Col>
         <Col style={{ padding: "0" }} className="" lg={3} xs={12}>
-          <Board titulo="Finalizada" status="Finalizada" filters={filters} />
+          <Board titulo="Finalizadas" status="Finalizada" filters={filters} />
         </Col>
       </Row>
     </>

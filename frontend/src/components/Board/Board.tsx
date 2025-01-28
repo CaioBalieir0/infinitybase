@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 import s from "./Board.module.css";
 import Task from "../Tasks/Tasks";
 import useTasks from "@/hooks/useTasks";
@@ -15,9 +15,6 @@ interface BoardProps {
 }
 
 export default function Board({ titulo, status, filters }: BoardProps) {
-  const [tasks, setTasks] = useState([]);
-  const [refreshKey, setRefreshKey] = useState(0);
-
   const memoizedFilters = useMemo(
     () => ({
       ...filters,
@@ -26,18 +23,15 @@ export default function Board({ titulo, status, filters }: BoardProps) {
     [filters.priority, filters.title]
   );
 
-  const {
-    tasks: fetchedTasks,
-    loading,
-    error,
-  } = useTasks(memoizedFilters, refreshKey);
-
-  const handleTaskCreated = () => {
-    setRefreshKey((prevKey) => prevKey + 1);
-  };
+  const { tasks: fetchedTasks, loading, error } = useTasks(memoizedFilters);
 
   if (loading) {
-    return <p>Carregando tarefas...</p>;
+    return (
+      <div className="text-center">
+        <p>Carregando tarefas...</p>
+        <Spinner size="sm" />
+      </div>
+    );
   }
 
   if (error) {
@@ -54,7 +48,7 @@ export default function Board({ titulo, status, filters }: BoardProps) {
             <h3>{titulo}</h3>
           </div>
           <div>
-            <ModalCreate onTaskCreated={handleTaskCreated} />
+            <ModalCreate status={status} />
           </div>
         </div>
         <Row>

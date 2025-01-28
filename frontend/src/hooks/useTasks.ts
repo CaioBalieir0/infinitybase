@@ -15,7 +15,7 @@ interface Filter {
   priority?: string;
 }
 
-export default function useTasks(filters: Filter, refreshKey: number) {
+export default function useTasks(filters: Filter) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +40,7 @@ export default function useTasks(filters: Filter, refreshKey: number) {
     };
 
     fetchTasks();
-  }, [filters, refreshKey]);
+  }, [filters]);
 
   return { tasks, loading, error };
 }

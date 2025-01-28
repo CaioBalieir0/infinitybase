@@ -2,16 +2,16 @@ import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import useCreateTask from "@/hooks/useCreateTask";
 
-interface FormCreateProps {
-  onTaskCreated: () => void;
+interface FormProps {
+  statusBoard: string;
 }
 
-export default function FormCreate({ onTaskCreated }: FormCreateProps) {
+export default function FormCreate({ statusBoard }: FormProps) {
   const [validated, setValidated] = useState<boolean>(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState<string>("");
   const [priority, setPriority] = useState<string>("Baixa");
-  const [status, setStatus] = useState<string>("Não Iniciada");
+  const [status, setStatus] = useState<string>(statusBoard || "Não Iniciada");
 
   const { createTask, loading, error, success } = useCreateTask();
 
@@ -28,7 +28,7 @@ export default function FormCreate({ onTaskCreated }: FormCreateProps) {
     if (form.checkValidity()) {
       event.preventDefault();
       await createTask({ title, description, priority, status });
-      onTaskCreated();
+      window.location.reload();
     }
   };
 
