@@ -12,11 +12,13 @@ export default function useCreateTask() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const createTask = async (newTask: Task) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
+    setMessage("");
 
     try {
       const response = await axios.post(
@@ -24,16 +26,17 @@ export default function useCreateTask() {
         newTask
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         setSuccess(true);
+        setMessage(response.data.message);
       }
     } catch (err: any) {
-      console.log(err);
-      setError(err.message || "Erro ao criar tarefa.");
+      console.error(err);
+      setError(err.response?.data?.message || "Erro ao criar tarefa.");
     } finally {
       setLoading(false);
     }
   };
 
-  return { createTask, loading, error, success };
+  return { createTask, loading, error, success, message };
 }
