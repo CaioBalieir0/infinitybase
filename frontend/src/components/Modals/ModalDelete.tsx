@@ -54,12 +54,12 @@ export default function ModalDelete({ modalTaskId }: ModalDeleteProps) {
         <Modal.Body className="bg-dark px-5">
           Deseja excluir esta tarefa?
           <Row className="g-0 mt-4 pb-3">
-            <Col lg={3}>
+            <Col className="col-lg-3 col-6">
               <Button variant="secondary" onClick={handleClose}>
                 Cancelar
               </Button>
             </Col>
-            <Col lg={3}>
+            <Col className="col-lg-3 col-6">
               <Button variant="danger" onClick={handleDelet}>
                 Excluir
               </Button>

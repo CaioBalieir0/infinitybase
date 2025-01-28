@@ -43,7 +43,7 @@ export default function Task({
         <Row className="justify-content-start">
           <Col className="">
             <Alert
-              className="small py-0"
+              className="small py-0 text-center"
               variant={variant}
               style={{ width: "30%" }}
             >

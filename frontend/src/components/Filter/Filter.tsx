@@ -33,7 +33,7 @@ export default function Filter({ onFiltersChange }: FilterProps) {
         <Col lg="4">
           <Search onClickButton={handleSearch} />
         </Col>
-        <Col lg="4">
+        <Col lg="4" className="mt-lg-0 mt-3">
           <Priority onFilterChange={handlePriority} />
         </Col>
       </Row>
