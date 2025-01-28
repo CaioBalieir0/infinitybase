@@ -21,6 +21,7 @@ export default function useTaskUpdate(taskId: string) {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const updateTask = async (updatedTaskData: UpdateTaskData) => {
     setLoading(true);
@@ -35,6 +36,7 @@ export default function useTaskUpdate(taskId: string) {
 
       if (response.status === 200) {
         setSuccess(true);
+        setMessage(response.data.message);
       }
     } catch (err: any) {
       setError(err.message || "Erro ao atualizar a tarefa.");
@@ -43,5 +45,5 @@ export default function useTaskUpdate(taskId: string) {
     }
   };
 
-  return { updateTask, loading, error, success };
+  return { updateTask, loading, error, success, message };
 }

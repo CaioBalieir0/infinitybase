@@ -5,6 +5,7 @@ export default function useDeleteTask() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const deleteTask = async (taskId: string) => {
     setLoading(true);
@@ -18,6 +19,7 @@ export default function useDeleteTask() {
 
       if (response.status === 200) {
         setSuccess(true);
+        setMessage(response.data.message);
       }
     } catch (err: any) {
       console.log(err);
