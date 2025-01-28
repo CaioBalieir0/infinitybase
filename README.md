@@ -56,6 +56,7 @@ Instale as dependências do frontend e do backend:
 
 ```
 npm install
+npm run install-all
 ```
 
 Isso irá instalar as dependências em ambas as pastas (`frontend` e `backend`).
@@ -82,7 +83,7 @@ Se deseja rodar o MongoDB localmente, siga essas instruções
 #### **Windows:**
 
 1. Abra o **Prompt de Comando** ou o **PowerShell** .
-2. Navegue até a pasta onde o MongoDB foi instalado (geralmente em `C:\Program Files\MongoDB\Server\<versão>\bin\`).
+2. Navegue até a pasta onde o MongoDB foi instalado (geralmente em `C:\Program Files\MongoDB\Server\<sua-versão>\bin\`).
 3. Execute o seguinte comando para iniciar o servidor MongoDB:
    ```
    mongod
@@ -114,7 +115,7 @@ Por padrão, o frontend estará rodando na porta `3000`. Caso você precise alte
 ### Passos:
 
 1. Navegue até a pasta `frontend` do projeto.
-2. Abra o arquivo `.env.local` (se não existir, crie um novo arquivo com esse nome).
+2. Abra o arquivo `.env` (se não existir, crie um novo arquivo com esse nome).
 3. Adicione ou modifique a seguinte variável de ambiente para definir a URL da API:
 
    ```
