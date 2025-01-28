@@ -3,6 +3,7 @@ import { Row, Button, Col } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { FaTrash } from "react-icons/fa";
 import useDeleteTask from "@/hooks/useDeleteTask";
+import ToastMessage from "@/components/Toast/ToastMessage";
 
 interface ModalDeleteProps {
   modalTaskId: string;
@@ -10,14 +11,34 @@ interface ModalDeleteProps {
 
 export default function ModalDelete({ modalTaskId }: ModalDeleteProps) {
   const [show, setShow] = useState(false);
-  const { deleteTask, loading, error, success } = useDeleteTask();
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [type, setType] = useState<boolean>(false);
+
+  const { deleteTask, message } = useDeleteTask();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDelet = () => {
-    deleteTask(modalTaskId);
-    window.location.reload();
+    deleteTask(modalTaskId)
+      .then(() => {
+        setShow(false);
+        setShowToast(true);
+        setType(true);
+      })
+      .catch(() => {
+        setShowToast(true);
+        setType(false);
+      })
+      .finally(() =>
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000)
+      );
+  };
+
+  const handleCloseToast = () => {
     setShow(false);
+    window.location.reload();
   };
 
   return (
@@ -46,6 +67,13 @@ export default function ModalDelete({ modalTaskId }: ModalDeleteProps) {
           </Row>
         </Modal.Body>
       </Modal>
+
+      <ToastMessage
+        type={type}
+        message={message}
+        show={showToast}
+        onClose={handleCloseToast}
+      />
     </>
   );
 }

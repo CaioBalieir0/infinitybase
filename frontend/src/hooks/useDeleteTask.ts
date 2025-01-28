@@ -29,5 +29,5 @@ export default function useDeleteTask() {
     }
   };
 
-  return { deleteTask, loading, error, success };
+  return { deleteTask, loading, error, success, message };
 }
