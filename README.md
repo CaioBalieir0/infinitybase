@@ -52,14 +52,31 @@ cd infinitybase
 
 ### 2. **Instale as dependências**
 
-Instale as dependências do frontend e do backend:
+Instale as dependências na raíz do projeto:
 
 ```
 npm install
-npm run install-all
 ```
 
-Isso irá instalar as dependências em ambas as pastas (`frontend` e `backend`).
+Em seguida, instale separadamente as dependências do frontend e do backend:
+
+- Para o **frontend** :
+
+```
+  cd frontend
+  npm install
+  cd ..
+```
+
+- Para o **backend** :
+
+```
+  cd backend
+  npm install
+  cd ..
+```
+
+Agora as dependências estarão instaladas nas respectivas pastas!
 
 ### 3. **Rodando o projeto**
 
